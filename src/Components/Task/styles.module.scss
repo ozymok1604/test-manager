@@ -1,0 +1,48 @@
+.task {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.edit_img:hover {
+  cursor: pointer;
+}
+
+.delete_img:hover {
+  cursor: pointer;
+}
+
+.title {
+  width: 120px;
+}
+
+.description {
+  width: 120px;
+  overflow: hidden;
+}
+
+.status {
+  padding: 5px;
+
+  text-align: center;
+  border-radius: 3px;
+}
+.status:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 16px 20px rgba(0, 0, 0, 0.2);
+}
+
+.completed_status {
+  border: 1px solid black;
+  padding: 5px;
+  width: 130px;
+  text-align: center;
+  border-radius: 3px;
+  color: white;
+  background-color: orange;
+}
+.completed_status:hover {
+  cursor: pointer;
+}
