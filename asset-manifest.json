@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/test-manager/static/css/main.62677359.css",
+    "main.js": "/test-manager/static/js/main.6be73037.js",
+    "static/js/787.34d05ddd.chunk.js": "/test-manager/static/js/787.34d05ddd.chunk.js",
+    "static/media/edit.svg": "/test-manager/static/media/edit.55c45e371ed890cac9bd1486e54b2d8b.svg",
+    "index.html": "/test-manager/index.html",
+    "static/media/delete.svg": "/test-manager/static/media/delete.44539dc8de0c51adee8a70642d5641a8.svg",
+    "main.62677359.css.map": "/test-manager/static/css/main.62677359.css.map",
+    "main.6be73037.js.map": "/test-manager/static/js/main.6be73037.js.map",
+    "787.34d05ddd.chunk.js.map": "/test-manager/static/js/787.34d05ddd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62677359.css",
+    "static/js/main.6be73037.js"
+  ]
+}
