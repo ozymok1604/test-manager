@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask, editTask, openModal } from "../store";
 import { getRandomNumber } from "../utils/getRandomNumber";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import styles from "./styles.module.scss";
 
 const CreateTaskModal = () => {
@@ -61,39 +63,42 @@ const CreateTaskModal = () => {
           {Object.keys(editedTask).length ? "Edit Task" : " Add a new Task"}{" "}
         </div>
         <div className={styles.form}>
-          <div className={styles.field_title}>Title</div>
-          <input
+          <Form.Label>Title</Form.Label>
+          <Form.Control
             onChange={onTitleInput}
-            className={styles.title_input}
-            type="text"
             value={title}
-          />
-          <div className={styles.field_title}>Description</div>
-          <textarea
-            onChange={onDescriptionInput}
-            className={styles.description_input}
-            type="text"
-            defaultValue={editedTask.description}
-          />
-          <div className={styles.field_title}>Due date</div>
-          <input
-            onChange={onDateInput}
-            className={styles.date_input}
-            type="date"
-            defaultValue={editedTask.date}
+            type="email"
+            placeholder=""
           />
 
-          <button
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            onChange={onDescriptionInput}
+            value={description}
+            defaultValue={editedTask.description}
+            type="email"
+            placeholder=""
+          />
+
+          <Form.Label>Due date</Form.Label>
+          <Form.Control
+            onChange={onDateInput}
+            value={date}
+            type="date"
+            defaultValue={editedTask.date}
+            placeholder=""
+          />
+
+          <Button
             disabled={title || Object.keys(editedTask).length ? false : true}
             onClick={onButtonClick}
-            className={
-              title || Object.keys(editedTask).length
-                ? styles.add_button
-                : styles.add_button_disabled
+            className={styles.add_button}
+            variant={
+              title || Object.keys(editedTask).length ? "primary" : "secondary"
             }
           >
             {Object.keys(editedTask).length ? "Edit" : "Add"}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

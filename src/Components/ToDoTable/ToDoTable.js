@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Task } from "../../Components/Task/Task";
 import { addTask } from "../../store";
 import { getFilteredList } from "../../utils/getFilteredList";
+import Button from "react-bootstrap/Button";
 import styles from "./styles.module.scss";
 
 const ToDoTable = () => {
@@ -65,20 +66,19 @@ const ToDoTable = () => {
     <>
       <div className={styles.display_container}>
         <div className={styles.display_label}>Display: </div>
-        <div
-          className={styles.display_option}
+        <Button
           onClick={onCompletedClick}
-          style={{ backgroundColor: displayCompleted ? "green" : "grey" }}
+          variant={displayCompleted ? "success" : "secondary"}
         >
           Completed
-        </div>
-        <div
-          className={styles.display_option}
+        </Button>
+
+        <Button
           onClick={onNotCompletedClick}
-          style={{ backgroundColor: displayNotCompleted ? "green" : "grey" }}
+          variant={displayNotCompleted ? "success" : "secondary"}
         >
           Not Completed
-        </div>
+        </Button>
       </div>
       <div className={styles.table}>
         <div className={styles.table_fields}>

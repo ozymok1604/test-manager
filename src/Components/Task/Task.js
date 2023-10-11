@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTask, editTask, openModal } from "../../store";
+import Button from "react-bootstrap/Button";
 import Delete from "../../assets/delete.svg";
 import Edit from "../../assets/edit.svg";
 import styles from "./styles.module.scss";
@@ -35,13 +36,12 @@ const Task = ({ task, index, isCompleted }) => {
       <div className={styles.description}>{task?.description}</div>
       <div className={styles.date}>{task?.date}</div>
 
-      <div
-        style={{ backgroundColor: task.status ? "green" : "orange" }}
+      <Button
         onClick={onStatusClick}
-        className={styles.completed_status}
+        variant={task.status ? "success" : "secondary"}
       >
         {task.status == true ? "Completed" : "Not Completed"}
-      </div>
+      </Button>
 
       {!isCompleted && (
         <>
