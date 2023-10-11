@@ -3,6 +3,7 @@ import { editTask, filterTasks, openModal } from "../../store";
 import { ToDoTable } from "../../Components/ToDoTable/ToDoTable";
 import { CreateTaskModal } from "../../layouts/CreateTaskModal";
 import styles from "./styles.module.scss";
+import { useState } from "react";
 
 const Home = () => {
   const isOpenModal = useSelector((state) => state.isOpen);
@@ -24,6 +25,7 @@ const Home = () => {
         <div className={styles.header_title}>ToDo List</div>
         <div className={styles.filter_container}>
           <div className={styles.filter_title}>Search:</div>
+
           <input onChange={onFilterChange} className={styles.filter}></input>
         </div>
 

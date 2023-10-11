@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Task } from "../../Components/Task/Task";
 import { addTask } from "../../store";
@@ -11,6 +11,8 @@ const ToDoTable = () => {
   const deletedTaskId = useSelector((state) => state.deletedTaskId);
   const editedTask = useSelector((state) => state.editedTask);
   const filterValue = useSelector((state) => state.filterValue);
+  const [displayCompleted, setDisplayCompleted] = useState(true);
+  const [displayNotCompleted, setDisplayNotCompleted] = useState(true);
 
   const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
 
@@ -42,21 +44,57 @@ const ToDoTable = () => {
       : item
   );
 
+  const displayFilteredArray = filteredToDoList.filter((item) => {
+    if (displayCompleted == true && displayNotCompleted == true) {
+      return item;
+    } else if (displayCompleted == true) {
+      return item.status == true;
+    } else if (displayNotCompleted == true) {
+      return item.status == false;
+    }
+  });
+  const onCompletedClick = () => {
+    setDisplayCompleted(!displayCompleted);
+  };
+
+  const onNotCompletedClick = () => {
+    setDisplayNotCompleted(!displayNotCompleted);
+  };
+
   return (
-    <div className={styles.table}>
-      <div className={styles.table_fields}>
-        <div>#</div>
-        <div>Title</div>
-        <div>Description</div>
-        <div>Due date</div>
-        <div>Status</div>
-        <div>Edit</div>
-        <div>Delete</div>
+    <>
+      <div className={styles.display_container}>
+        <div className={styles.display_label}>Display: </div>
+        <div
+          className={styles.display_option}
+          onClick={onCompletedClick}
+          style={{ backgroundColor: displayCompleted ? "green" : "grey" }}
+        >
+          Completed
+        </div>
+        <div
+          className={styles.display_option}
+          onClick={onNotCompletedClick}
+          style={{ backgroundColor: displayNotCompleted ? "green" : "grey" }}
+        >
+          Not Completed
+        </div>
       </div>
-      {filteredToDoList?.map((task, index) => {
-        return <Task index={index} task={task} />;
-      })}
-    </div>
+      <div className={styles.table}>
+        <div className={styles.table_fields}>
+          <div>#</div>
+          <div>Title</div>
+          <div>Description</div>
+          <div>Due date</div>
+          <div>Status</div>
+          <div>Edit</div>
+          <div>Delete</div>
+        </div>
+        {displayFilteredArray?.map((task, index) => {
+          return <Task index={index} task={task} />;
+        })}
+      </div>
+    </>
   );
 };
 
